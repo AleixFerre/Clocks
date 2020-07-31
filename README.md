@@ -19,4 +19,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-[MIT](https://github.com/CatalaHD/Loading-Arcs/blob/master/LICENSE)
+[MIT](https://github.com/CatalaHD/Clock/blob/master/LICENSE)
