@@ -14,10 +14,12 @@ let pallettes = [
   ["#D8CFAF", "#E6B89C", "#ED9390", "#F374AE", "#333333"]
   //... add more!
 ];
+let vignette; // The vignette effect image
 
 // Function awake
 function preload() {
   roboto = loadFont('assets/Roboto-Black.ttf');
+  vignette = loadImage('assets/vignette.png');
 }
 
 // Function start
@@ -82,6 +84,8 @@ function draw() {
   noStroke();
   textAlign(CENTER);
   text(pad(hr, 2) + ':' + pad(mn, 2) + ':' + pad(sc, 2), 10, 250);
+
+  image(vignette, -width / 2, -height / 2, width, height);
 }
 
 // Padding numbers function
