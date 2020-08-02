@@ -1,11 +1,11 @@
-# Clock
-Stylized and beautiful clocks to... well... see the time.
+# Starfield Clock
+A stylized and beautiful clocks with a starfield in the background!
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clock/master/examples/exampleSimple.png)](https://catalahd.github.io/Clock)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clock/master/examples/exampleStarfield.png)](https://catalahd.github.io/Clock/Starfield)
 
 ## Editing
 
-You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/collections/XsLf0sUaX).
+You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/sketches/n75-txP0w).
 
 ## Usage
 

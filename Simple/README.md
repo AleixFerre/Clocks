@@ -1,11 +1,11 @@
-# Clock
-Stylized and beautiful clocks to... well... see the time.
+# Simple Clock
+A minimalistic clock to... well... see the time. See the code to change the color pallette easily.
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clock/master/examples/exampleSimple.png)](https://catalahd.github.io/Clock)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clock/master/examples/exampleSimple.png)](https://catalahd.github.io/Clock/Simple)
 
 ## Editing
 
-You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/collections/XsLf0sUaX).
+You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/sketches/gf_vssSWs).
 
 ## Usage
 

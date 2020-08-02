@@ -1,13 +1,50 @@
-<!DOCTYPE html><html><head>
-    <script src="p5.min.js"></script>
-    <script src="p5.dom.min.js"></script>
-    <script src="p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 
-  </head>
-  <body>
-    <script src="sketch.js"></script>
-  
+html,
+body {
+  text-align: center;
+  font-family: "Roboto";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-</body></html>
+.vertical-menu {
+  width: 200px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>Choose your clock style!</h1>
+
+<div class="vertical-menu">
+  <a href="#" class="active">Menu</a>
+  <a href="/Simple">Simple Clock</a>
+  <a href="/Starfield">Starfield Clock</a>
+</div>
+
+</body>
+</html>
