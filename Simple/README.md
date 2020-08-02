@@ -1,7 +1,7 @@
 # Simple Clock
-A minimalistic clock to... well... see the time. See the code to change the color pallette easily.
+A minimalistic Clocks to... well... see the time. See the code to change the color pallette easily.
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clock/master/examples/exampleSimple.png)](https://catalahd.github.io/Clock/Simple)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSimple.png)](https://catalahd.github.io/Clocks/Simple)
 
 ## Editing
 
@@ -19,4 +19,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-[MIT](https://github.com/CatalaHD/Clock/blob/master/LICENSE)
+[MIT](https://github.com/CatalaHD/Clocks/blob/master/LICENSE)

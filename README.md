@@ -1,7 +1,7 @@
-# Clock
+# Clocks
 Stylized and beautiful clocks to... well... see the time.
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clock/master/examples/exampleSimple.png)](https://catalahd.github.io/Clock)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSimple.png)](https://catalahd.github.io/Clocks)
 
 ## Editing
 
@@ -19,4 +19,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-[MIT](https://github.com/CatalaHD/Clock/blob/master/LICENSE)
+[MIT](https://github.com/CatalaHD/Clocks/blob/master/LICENSE)
