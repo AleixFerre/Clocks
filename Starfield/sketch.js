@@ -11,102 +11,106 @@ let speed = 3;
 let indexPallette = 0; // Index of the shown pallette
 
 let pallettes = [
-  ["#264653", "#2A9D8F", "#E9C46A", "#F4A261", "#FFFFFF"],
-  ["#1F2041", "#4B3F72", "#FFC857", "#119DA4", "#FFFFFF"],
-  ["#314CB6", "#B68CB8", "#6461A0", "#EFBDEB", "#FFFFFF"],
-  ["#3D315B", "#444B6E", "#708B75", "#9AB87A", "#FFFFFF"],
-  ["#D8CFAF", "#E6B89C", "#ED9390", "#F374AE", "#333333"]
-  //... add more!
+    ["#264653", "#2A9D8F", "#E9C46A", "#F4A261", "#FFFFFF"],
+    ["#1F2041", "#4B3F72", "#FFC857", "#119DA4", "#FFFFFF"],
+    ["#314CB6", "#B68CB8", "#6461A0", "#EFBDEB", "#FFFFFF"],
+    ["#3D315B", "#444B6E", "#708B75", "#9AB87A", "#FFFFFF"],
+    ["#D8CFAF", "#E6B89C", "#ED9390", "#F374AE", "#333333"]
+    //... add more!
 ];
 let vignette; // The vignette effect image
 
 function preload() {
-  roboto = loadFont("assets/Roboto-Black.ttf");
-  vignette = loadImage('assets/vignette.png');
+    roboto = loadFont("assets/Roboto-Black.ttf");
+    vignette = loadImage('assets/vignette.png');
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  angleMode(DEGREES);
-  textFont(roboto);
-  textSize(100);
-  for (var i = 0; i < 800; i++) {
-    stars[i] = new Star();
-  }
+    createCanvas(windowWidth, windowHeight);
+    angleMode(DEGREES);
+    textFont(roboto);
+    textSize(100);
+    for (var i = 0; i < 800; i++) {
+        stars[i] = new Star();
+    }
 }
 
 function draw() {
-  
-  // Choose the color pallette
-  const pallette = pallettes[indexPallette];
-  
-  background(pallette[0]);
-  translate(width / 2, height / 2);
-  
-  // Update and show all the particles
-  for (var i = 0; i < stars.length; i++) {
-    stars[i].update();
-    stars[i].show();
-  }
-  
-  // -------------------------
-  // Show the clock
-  // -------------------------
-  rotate(-90);
 
-  let hr = hour();
-  let mn = minute();
-  let sc = second();
+    // Choose the color pallette
+    const pallette = pallettes[indexPallette];
 
-  strokeWeight(8);
-  stroke(pallette[1]);
-  noFill();
-  let secondAngle = map(sc, 0, 60, 0, 360);
-  arc(0, 0, 300, 300, 0, secondAngle);
+    background(pallette[0]);
+    translate(width / 2, height / 2);
 
-  stroke(pallette[2]);
-  let minuteAngle = map(mn, 0, 60, 0, 360);
-  arc(0, 0, 280, 280, 0, minuteAngle);
+    // Update and show all the particles
+    for (var i = 0; i < stars.length; i++) {
+        stars[i].update();
+        stars[i].show();
+    }
 
-  stroke(pallette[3]);
-  let hourAngle = map(hr % 12, 0, 12, 0, 360);
-  arc(0, 0, 260, 260, 0, hourAngle);
+    // -------------------------
+    // Show the clock
+    // -------------------------
+    rotate(-90);
 
-  push();
-  rotate(secondAngle);
-  stroke(pallette[1]);
-  line(0, 0, 100, 0);
-  pop();
+    let hr = hour();
+    let mn = minute();
+    let sc = second();
 
-  push();
-  rotate(minuteAngle);
-  stroke(pallette[2]);
-  line(0, 0, 75, 0);
-  pop();
+    strokeWeight(8);
+    stroke(pallette[1]);
+    noFill();
+    let secondAngle = map(sc, 0, 60, 0, 360);
+    arc(0, 0, 300, 300, 0, secondAngle);
 
-  push();
-  rotate(hourAngle);
-  stroke(pallette[3]);
-  line(0, 0, 50, 0);
-  pop();
+    stroke(pallette[2]);
+    let minuteAngle = map(mn, 0, 60, 0, 360);
+    arc(0, 0, 280, 280, 0, minuteAngle);
 
-  stroke(255);
-  point(0, 0);
+    stroke(pallette[3]);
+    let hourAngle = map(hr % 12, 0, 12, 0, 360);
+    arc(0, 0, 260, 260, 0, hourAngle);
 
-  rotate(90);
-  fill(pallette[4]);
-  noStroke();
-  textAlign(CENTER);
-  text(pad(hr, 2) + ':' + pad(mn, 2) + ':' + pad(sc, 2), 10, 250);
+    push();
+    rotate(secondAngle);
+    stroke(pallette[1]);
+    line(0, 0, 100, 0);
+    pop();
 
-  // Show the vignette image effect
-  image(vignette, -width / 2, -height / 2, width, height);
+    push();
+    rotate(minuteAngle);
+    stroke(pallette[2]);
+    line(0, 0, 75, 0);
+    pop();
+
+    push();
+    rotate(hourAngle);
+    stroke(pallette[3]);
+    line(0, 0, 50, 0);
+    pop();
+
+    stroke(255);
+    point(0, 0);
+
+    rotate(90);
+    fill(pallette[4]);
+    noStroke();
+    textAlign(CENTER);
+    text(pad(hr, 2) + ':' + pad(mn, 2) + ':' + pad(sc, 2), 10, 250);
+
+    // Show the vignette image effect
+    image(vignette, -width / 2, -height / 2, width, height);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
 
 // Padding numbers function
 // See: https://stackoverflow.com/a/10073788/13295607
 function pad(n, width, z) {
-  z = z || '0';
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    z = z || '0';
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
