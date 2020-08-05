@@ -1,55 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Clocks</title>
-<link rel="shortcut icon" href="assets/icon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-
-html,
-body {
-  background-color: #264653;
-  text-align: center;
-  color: #FFECD1;
-  font-family: "Roboto";
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.vertical-menu {
-  width: 200px;
-}
-
-.vertical-menu a {
-  border-radius: 5px;
-  background-color: #F4A261;
-  color: black;
-  display: block;
-  padding: 12px;
-  text-decoration: none;
-}
-
-.vertical-menu a:hover {
-  background-color: #FFA257;
-}
-
-.vertical-menu a.active {
-  background-color: #E76F51;
-  color: white;
-}
-</style>
-</head>
-<body>
-
-<h1>Choose your clock style!</h1>
-
-<div class="vertical-menu">
-  <a href="#" class="active">Menu</a>
-  <a href="./Simple">Simple Clock</a>
-  <a href="./Starfield">Starfield Clock</a>
-</div>
-
-</body>
+  <head>
+    <title>Clocks</title>
+    <link rel="shortcut icon" href="assets/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="content">
+      <h1>Choose your clock style!</h1>
+      <div class="vertical-menu">
+        <a href="./Simple">Simple Clock</a>
+        <a href="./Starfield">Starfield Clock</a>
+        <a href="./Snow">Snow Clock</a>
+        <a href="./404" class="error">Error test page</a>
+      </div>
+    </div>
+  </body>
 </html>

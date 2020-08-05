@@ -1,0 +1,52 @@
+html,
+body {
+    background-color: #264653;
+    color: #FFECD1;
+    font-family: "Roboto";
+}
+
+button {
+    font-size: large;
+}
+
+.error {
+    color: #FFFFFFAA;
+    font-size: 200px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.number {
+    color: #FFFFFFAA;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.content {
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+}
+
+.vertical-menu {
+    width: 200px;
+}
+
+.vertical-menu a {
+    border-radius: 5px;
+    background-color: #F4A261;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #FFA257;
+}
+
+.vertical-menu a.active {
+    background-color: #E76F51;
+    color: white;
+}

@@ -1,0 +1,41 @@
+html,
+body {
+    background-color: #264653;
+    color: #FFECD1;
+    font-family: "Roboto";
+}
+
+.content {
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+}
+
+.vertical-menu {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+}
+
+.vertical-menu a {
+    border-radius: 5px;
+    background-color: #F4A261;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #FFA257;
+}
+
+.vertical-menu a.error {
+    background-color: red;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+}
