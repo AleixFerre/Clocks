@@ -2,11 +2,11 @@
 
 A minimalistic Clocks to... well... see the time. See the code to change the color pallette easily.
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSimple.png)](https://catalahd.github.io/Clocks/Simple)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSnow.png)](https://catalahd.github.io/Clocks/Snow)
 
 ## Editing
 
-You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/sketches/gf_vssSWs).
+You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/sketches/nt24zmSyW).
 
 ## Usage
 
