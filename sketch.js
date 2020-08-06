@@ -10,7 +10,7 @@ let pallettes = []; // Pallettes imported from file
 let jsonTemp; // Temporary variable that charges the JSON file
 
 function preload() {
-    jsonTemp = loadJSON("/assets/pallettes.json");
+    jsonTemp = loadJSON("./assets/pallettes.json");
 }
 
 function setup() {
