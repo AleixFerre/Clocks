@@ -7,14 +7,8 @@
 
 let roboto; // Font
 let indexPallette = 0; // Index of the shown pallette
-let pallettes = [
-    ["#264653", "#2A9D8F", "#E9C46A", "#F4A261", "#FFFFFF"],
-    ["#1F2041", "#4B3F72", "#FFC857", "#119DA4", "#FFFFFF"],
-    ["#314CB6", "#B68CB8", "#6461A0", "#EFBDEB", "#FFFFFF"],
-    ["#3D315B", "#444B6E", "#708B75", "#9AB87A", "#FFFFFF"],
-    ["#D8CFAF", "#E6B89C", "#ED9390", "#F374AE", "#333333"]
-    //... add more!
-];
+let pallettes = []; // Pallettes imported from file
+let jsonTemp; // Temporary variable that charges the JSON file
 let vignette; // The vignette effect image
 
 // Snowy things
@@ -26,6 +20,7 @@ let textures = [];
 
 // Function awake
 function preload() {
+    jsonTemp = loadJSON("../assets/pallettes.json");
     spritesheet = loadImage('assets/flakes32.png');
     roboto = loadFont('assets/Roboto-Black.ttf');
     vignette = loadImage('assets/vignette.png');
@@ -33,6 +28,10 @@ function preload() {
 
 // Function start
 function setup() {
+
+    // We charge the pallettes
+    pallettes = jsonTemp.pallettes;
+
     // We first get the colors from the URL
     let params = getURLParams();
 
