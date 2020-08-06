@@ -1,6 +1,6 @@
 // Code by Aleix Ferré
 // Github: https://github.com/CatalaHD/
-// Sketch: editor.p5js.org/thecatalahd/sketches/gf_vssSWs
+// Sketch: editor.p5js.org/thecatalahd/sketches/nt24zmSyW
 // Based on Daniel Shiffman's code
 // See video: https://youtu.be/cl-mHFCGzYk
 
