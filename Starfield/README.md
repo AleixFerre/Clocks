@@ -1,6 +1,6 @@
 # Starfield Clock
 
-A stylized and beautiful clocks with a starfield in the background!
+A stylized and beautiful clock with a starfield in the background!
 
 [![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleStarfield.png)](https://catalahd.github.io/Clocks/Starfield)
 

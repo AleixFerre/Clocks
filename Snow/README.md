@@ -1,6 +1,6 @@
-# Simple Clock
+# Snow Clock
 
-A minimalistic Clocks to... well... see the time. See the code to change the color pallette easily.
+A stylized and beautiful clock with snow falling in the background!
 
 [![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSnow.png)](https://catalahd.github.io/Clocks/Snow)
 

@@ -22,8 +22,8 @@ let textures = [];
 function preload() {
     jsonTemp = loadJSON("../assets/pallettes.json");
     spritesheet = loadImage('assets/flakes32.png');
-    roboto = loadFont('assets/Roboto-Black.ttf');
-    vignette = loadImage('assets/vignette.png');
+    roboto = loadFont('../assets/Roboto-Black.ttf');
+    vignette = loadImage('../assets/vignette.png');
 }
 
 // Function start

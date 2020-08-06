@@ -1,6 +1,6 @@
 # Simple Clock
 
-A minimalistic Clocks to... well... see the time. See the code to change the color pallette easily.
+Minimalistic Clock to... well... see the time. Choose your own pallette!
 
 [![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSimple.png)](https://catalahd.github.io/Clocks/Simple)
 

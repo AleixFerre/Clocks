@@ -13,8 +13,8 @@ let vignette; // The vignette effect image
 // Function awake
 function preload() {
     jsonTemp = loadJSON("../assets/pallettes.json");
-    roboto = loadFont('assets/Roboto-Black.ttf');
-    vignette = loadImage('assets/vignette.png');
+    roboto = loadFont('../assets/Roboto-Black.ttf');
+    vignette = loadImage('../assets/vignette.png');
 }
 
 // Function start
