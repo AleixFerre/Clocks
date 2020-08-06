@@ -26,6 +26,15 @@ function preload() {
 }
 
 function setup() {
+    // We first get the colors from the URL
+    let params = getURLParams();
+
+    if (params.id && !isNaN(params.id)) {
+        if (params.id < pallettes.length && params.id >= 0) {
+            indexPallette = params.id;
+        }
+    }
+
     createCanvas(windowWidth, windowHeight);
     angleMode(DEGREES);
     textFont(roboto);

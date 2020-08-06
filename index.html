@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Clocks</title>
     <link rel="shortcut icon" href="assets/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/lib/p5.min.js"></script>
+    <script src="/lib/p5.dom.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
+</head>
+
+<body>
+    <script src="sketch.js"></script>
     <div class="content">
-      <h1>Choose your clock style!</h1>
-      <div class="vertical-menu">
-        <a href="./Simple">Simple Clock</a>
-        <a href="./Starfield">Starfield Clock</a>
-        <a href="./Snow">Snow Clock</a>
-        <a href="./404" class="error">Error test page</a>
-      </div>
+        <h1>Choose your clock style!</h1>
+        <div class="vertical-menu">
+            <a href="./Simple" class="clockBtn">Simple Clock</a>
+            <a href="./Starfield" class="clockBtn">Starfield Clock</a>
+            <a href="./Snow" class="clockBtn">Snow Clock</a>
+            <a href="./404" class="error">404 page</a>
+        </div>
     </div>
-  </body>
+    <div class="content" id="pallette">
+        <h1>Choose your clock pallette!</h1>
+    </div>
+</body>
+
 </html>

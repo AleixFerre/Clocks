@@ -1,8 +1,20 @@
 html,
 body {
+    margin: 0px;
     background-color: #264653;
     color: #FFECD1;
     font-family: "Roboto";
+}
+
+canvas {
+    display: block;
+}
+
+select {
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
+    width: 100%;
 }
 
 .content {
