@@ -6,7 +6,7 @@ class Particle {
     constructor(x, y, hu, firework) {
         this.pos = createVector(x, y);
         this.firework = firework;
-        this.lifespan = 255; // random(50, 255);
+        this.lifespan = random(50, 255);
         this.hu = random(71, 255);
         this.acc = createVector(0, 0);
         this.prevPos = createVector(x, y);
