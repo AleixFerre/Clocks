@@ -8,6 +8,7 @@ function getRandomSize() {
     let r = pow(random(0, 1), 3);
     return constrain(r * 32, 2, 32);
 }
+
 class Snowflake {
 
     constructor(sx, sy, img) {
