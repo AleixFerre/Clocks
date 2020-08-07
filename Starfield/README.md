@@ -2,7 +2,7 @@
 
 A stylized and beautiful clock with a starfield in the background!
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleStarfield.png)](https://catalahd.github.io/Clocks/Starfield)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleStarfield.png)](https://catalahd.github.io/Clocks/Starfield/?id=0)
 
 ## Editing
 

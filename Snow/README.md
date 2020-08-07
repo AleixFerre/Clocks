@@ -2,7 +2,7 @@
 
 A stylized and beautiful clock with snow falling in the background!
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSnow.png)](https://catalahd.github.io/Clocks/Snow)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSnow.png)](https://catalahd.github.io/Clocks/Snow/?id=0)
 
 ## Editing
 

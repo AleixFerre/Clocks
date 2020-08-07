@@ -2,7 +2,7 @@
 
 Minimalistic Clock to... well... see the time. Choose your own pallette!
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSimple.png)](https://catalahd.github.io/Clocks/Simple)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleSimple.png)](https://catalahd.github.io/Clocks/Simple/?id=0)
 
 ## Editing
 

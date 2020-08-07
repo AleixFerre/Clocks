@@ -2,11 +2,11 @@
 
 A stylized and beautiful clock with fireworks in the background!
 
-[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleFireworks.png)](https://catalahd.github.io/Clocks/Fireworks)
+[![example](https://raw.githubusercontent.com/CatalaHD/Clocks/master/examples/exampleFireworks.png)](https://catalahd.github.io/Clocks/Fireworks/?id=0)
 
 ## Editing
 
-You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/sketches/).
+You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/sketches/kAhhmh1hw).
 
 ## Usage
 
