@@ -3,8 +3,10 @@ let div; // The div that all is in
 let colors = []; // Actual pallette of colors
 let buttons = []; // Clocks' buttons
 let links = []; // Absolute links
+let switchSmooth; // The smoothing switcher
 
 let indexPallette = 0; // Index of the shown pallette
+let smooth = false; // Will be the clock smooth?
 
 let pallettes = []; // Pallettes imported from file
 let jsonTemp; // Temporary variable that charges the JSON file
@@ -28,6 +30,9 @@ function setup() {
     selectPallette.parent(div);
     selectPallette.changed(palletteChanged);
 
+    switchSmooth = select("#smooth");
+    switchSmooth.changed(changingSmooth);
+
 
     for (let i = 0; i < pallettes.length; i++) {
         selectPallette.option("Pallette" + (i + 1));
@@ -44,6 +49,7 @@ function setup() {
     }
 
     createCanvas(windowWidth, 200);
+    checkLinks();
 
 }
 
@@ -70,11 +76,30 @@ function windowResized() {
     resizeCanvas(windowWidth, 200);
 }
 
-function palletteChanged() {
+function checkLinks() {
+    // Pallette index
     let tempVal = selectPallette.value();
     indexPallette = parseInt(tempVal.charAt(tempVal.length - 1)) - 1;
 
+    // Smooth
+    smooth = switchSmooth.checked();
+
+    updateLinks();
+}
+
+function palletteChanged() {
+    let tempVal = selectPallette.value();
+    indexPallette = parseInt(tempVal.charAt(tempVal.length - 1)) - 1;
+    updateLinks();
+}
+
+function changingSmooth() {
+    smooth = this.checked();
+    updateLinks();
+}
+
+function updateLinks() {
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].elt.href = links[i] + "/?id=" + indexPallette;
+        buttons[i].elt.href = links[i] + "/?id=" + indexPallette + "&smooth=" + smooth;
     }
 }
