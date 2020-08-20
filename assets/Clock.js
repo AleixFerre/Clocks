@@ -43,24 +43,20 @@ class Clock {
     show() {
         const pallette = pallettes[indexPallette];
 
+        this.upadateAngles();
+
         translate(width / 2, height / 2);
         rotate(-90);
 
         strokeWeight(8);
         stroke(pallette[1]);
         noFill();
-        this.angles[0] = map(this.s, 0, 60, 0, 360);
-        this.smoothedAngles[0] = lerp(this.smoothedAngles[0], this.angles[0], this.smoothVel);
         arc(0, 0, 300, 300, 0, this.isSmooth ? this.smoothedAngles[0] : this.angles[0]);
 
         stroke(pallette[2]);
-        this.angles[1] = map(this.m, 0, 60, 0, 360);
-        this.smoothedAngles[1] = lerp(this.smoothedAngles[1], this.angles[1], this.smoothVel);
         arc(0, 0, 280, 280, 0, this.isSmooth ? this.smoothedAngles[1] : this.angles[1]);
 
         stroke(pallette[3]);
-        this.angles[2] = map(this.h % 12, 0, 12, 0, 360);
-        this.smoothedAngles[2] = lerp(this.smoothedAngles[2], this.angles[2], this.smoothVel);
         arc(0, 0, 260, 260, 0, this.isSmooth ? this.smoothedAngles[2] : this.angles[2]);
 
         push();
@@ -89,6 +85,20 @@ class Clock {
         noStroke();
         textAlign(CENTER);
         text(pad(this.h, 2) + ':' + pad(this.m, 2) + ':' + pad(this.s, 2), 10, 250);
+    }
+
+    upadateAngles() {
+        // Angles
+        this.angles[0] = map(this.s, 0, 60, 0, 360);
+        this.angles[1] = map(this.m, 0, 60, 0, 360);
+        this.angles[2] = map(this.h % 12, 0, 12, 0, 360);
+
+        // Smoothed angles
+        if (this.isSmooth) {
+            this.smoothedAngles[0] = lerp(this.smoothedAngles[0], this.angles[0], this.smoothVel);
+            this.smoothedAngles[1] = lerp(this.smoothedAngles[1], this.angles[1], this.smoothVel);
+            this.smoothedAngles[2] = lerp(this.smoothedAngles[2], this.angles[2], this.smoothVel);
+        }
     }
 
 
