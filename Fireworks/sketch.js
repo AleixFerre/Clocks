@@ -1,6 +1,6 @@
 // Code by Aleix Ferré
 // Github: https://github.com/CatalaHD/
-// Sketch: editor.p5js.org/thecatalahd/sketches
+// Sketch: https://editor.p5js.org/thecatalahd/sketches/kAhhmh1hw
 // Based on Daniel Shiffman's code
 // https://thecodingtrain.com/CodingChallenges/074-clock.html
 
@@ -13,6 +13,7 @@ let vignette; // The vignette effect image
 // Firework things
 let fireworks = [];
 let gravity;
+let hearts;
 
 
 // Function awake
@@ -40,6 +41,8 @@ function setup() {
     }
 
     let smoothing = params.smooth == "true";
+
+    hearts = params.heart == "true";
 
     createCanvas(windowWidth, windowHeight);
 

@@ -100,6 +100,12 @@ function changingSmooth() {
 
 function updateLinks() {
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].elt.href = links[i] + "/?id=" + indexPallette + "&smooth=" + smooth;
+        let link = links[i];
+        print(link, link.charAt(link.length - 1));
+        if (link.charAt(link.length - 1) == "/") {
+            buttons[i].elt.href = link + "?id=" + indexPallette + "&smooth=" + smooth;
+        } else {
+            buttons[i].elt.href = link + "&id=" + indexPallette + "&smooth=" + smooth;
+        }
     }
 }

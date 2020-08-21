@@ -26,26 +26,42 @@ select {
 .vertical-menu {
     width: 100%;
     max-width: 500px;
-    margin: auto;
-    padding: 10px;
+    margin: 10px;
 }
 
 .vertical-menu a {
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #F4A261;
     color: black;
-    display: block;
-    padding: 12px;
+    margin-bottom: 5px;
+    display: grid;
+    padding: 15px;
+    font-weight: bold;
     text-decoration: none;
+    text-align: center;
 }
 
 .vertical-menu a:hover {
-    background-color: #FFA257;
+    background-color: #f68c36;
 }
 
 .vertical-menu a.error {
     background-color: red;
     color: white;
+}
+
+.vertical-menu a.error:hover {
+    background-color: rgb(214, 0, 0)
+}
+
+.horizontal-menu {
+    position: relative;
+    display: inline-flex;
+}
+
+.horizontal-menu a {
+    width: 218px;
+    margin-right: 4px;
 }
 
 h1 {

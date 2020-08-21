@@ -1,20 +1,25 @@
 // Code by Aleix Ferré
 // Github: https://github.com/CatalaHD/
-// Sketch: editor.p5js.org/thecatalahd/sketches
+// Sketch: editor.p5js.org/thecatalahd/sketches/kAhhmh1hw
 
 class Particle {
-    constructor(x, y, hu, firework) {
+    constructor(x, y, firework, target) {
         this.pos = createVector(x, y);
         this.firework = firework;
         this.lifespan = random(50, 255);
         this.hu = random(71, 255);
         this.acc = createVector(0, 0);
         this.prevPos = createVector(x, y);
+
         if (this.firework) {
-            this.vel = createVector(0, (height * random(-7, -4)) / 500);
+            this.vel = createVector(random(-2, 2), (height * random(-7, -4)) / 500);
         } else {
-            this.vel = p5.Vector.random2D();
-            this.vel.mult(random(1.5, 3.5));
+            if (target) {
+                this.vel = target;
+            } else {
+                this.vel = p5.Vector.random2D();
+                this.vel.mult(random(3, 5));
+            }
         }
     }
 
@@ -35,18 +40,14 @@ class Particle {
     }
 
     done() {
-        if (this.lifespan < 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.lifespan < 0;
     }
 
     show() {
         colorMode(HSB, 255);
 
         if (!this.firework) {
-            strokeWeight(3);
+            strokeWeight(3.5);
             stroke(this.hu, 255, 255, this.lifespan);
         } else {
             strokeWeight(6);

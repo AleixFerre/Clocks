@@ -13,7 +13,7 @@ class Clock {
         this.isSmooth = smooth;
         this.angles = [];
         this.smoothedAngles = [];
-        this.smoothVel = smoothVel || 1;
+        this.smoothVel = smoothVel || 0.1;
         this.setupClock();
     }
 
@@ -41,6 +41,8 @@ class Clock {
     }
 
     show() {
+
+        angleMode(DEGREES);
         const pallette = pallettes[indexPallette];
 
         this.upadateAngles();

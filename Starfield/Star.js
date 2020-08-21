@@ -4,11 +4,12 @@
 // Coding Challenge #1
 
 class Star {
-    constructor() {
+    constructor(isImg) {
         this.x = random(-width, width);
         this.y = random(-height, height);
         this.z = random(width);
         this.pz = this.z;
+        this.isImg = isImg;
     }
 
     update() {
@@ -25,11 +26,17 @@ class Star {
         fill(255, 255, 255, 50);
         noStroke();
 
-        var sx = map(this.x / this.z, 0, 1, 0, width);
-        var sy = map(this.y / this.z, 0, 1, 0, height);
+        let sx = map(this.x / this.z, 0, 1, 0, width);
+        let sy = map(this.y / this.z, 0, 1, 0, height);
 
-        var r = map(this.z, 0, width, 16, 0);
-        ellipse(sx, sy, r, r);
+
+        if (this.isImg) {
+            let r = map(this.z, 0, width, 40, 1);
+            this.showStar(sx, sy, r);
+        } else {
+            let r = map(this.z, 0, width, 16, 0);
+            ellipse(sx, sy, r);
+        }
 
         var px = map(this.x / this.pz, 0, 1, 0, width);
         var py = map(this.y / this.pz, 0, 1, 0, height);
@@ -39,5 +46,10 @@ class Star {
         stroke(255);
         strokeWeight(3);
         line(px, py, sx, sy);
+    }
+
+    showStar(sx, sy, r) {
+        imageMode(CENTER, CENTER);
+        image(starGlow, sx, sy, r, r);
     }
 }

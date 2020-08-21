@@ -15,11 +15,13 @@ let clock;
 let pallettes = []; // Pallettes imported from file
 let jsonTemp; // Temporary variable that charges the JSON file
 let vignette; // The vignette effect image
+let starGlow; // The star glow image effect
 
 function preload() {
     jsonTemp = loadJSON("../assets/pallettes.json");
     roboto = loadFont("../assets/Roboto-Black.ttf");
     vignette = loadImage('../assets/vignette.png');
+    starGlow = loadImage('./assets/starGlow.png');
 }
 
 function setup() {
@@ -36,6 +38,8 @@ function setup() {
         }
     }
 
+    let showImg = params.stars == "true";
+
     let smoothing = params.smooth == "true";
 
     createCanvas(windowWidth, windowHeight);
@@ -43,7 +47,7 @@ function setup() {
     clock = new Clock(smoothing, 0.1);
 
     for (var i = 0; i < 800; i++) {
-        stars[i] = new Star();
+        stars[i] = new Star(showImg);
     }
 }
 
