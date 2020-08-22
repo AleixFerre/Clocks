@@ -4,12 +4,19 @@
 // Coding Challenge #1
 
 class Star {
-    constructor(isImg) {
+    constructor(type) {
         this.x = random(-width, width);
         this.y = random(-height, height);
         this.z = random(width);
         this.pz = this.z;
-        this.isImg = isImg;
+
+        //? See function showStar(...) to see because this is commented
+        //  this.rotation = random(0, 360);
+
+        if (type) {
+            this.size = random(type.minSize, type.maxSize);;
+            this.img = type.img;
+        }
     }
 
     update() {
@@ -29,9 +36,8 @@ class Star {
         let sx = map(this.x / this.z, 0, 1, 0, width);
         let sy = map(this.y / this.z, 0, 1, 0, height);
 
-
-        if (this.isImg) {
-            let r = map(this.z, 0, width, 40, 1);
+        if (this.img) {
+            let r = map(this.z, 0, width, 40, 1) * this.size;
             this.showStar(sx, sy, r);
         } else {
             let r = map(this.z, 0, width, 16, 0);
@@ -49,7 +55,21 @@ class Star {
     }
 
     showStar(sx, sy, r) {
-        imageMode(CENTER, CENTER);
-        image(starGlow, sx, sy, r, r);
+        // This comented code is to enable rotation
+        // This is not implemented because of the translate/rotate stack inefficiency
+        // with such amount of stars.
+        //
+        // push();
+        // translate(sx, sy);
+        // rotate(this.rotation);
+        // this.rotation += 0.5;
+        //
+        // if (this.rotation > 360) {
+        //     this.rotation = 0;
+        // }
+        //
+        image(this.img, sx, sy, r, r);
+        //
+        // pop();
     }
 }

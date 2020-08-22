@@ -6,8 +6,29 @@
 
 let stars = [];
 
+const globalStarSize = 0;
+
+const starTypes = [{
+        name: "starGlow.png",
+        img: null,
+        minSize: 0 + globalStarSize,
+        maxSize: 2 + globalStarSize
+    },
+    {
+        name: "starGlow2.png",
+        img: null,
+        minSize: 2 + globalStarSize,
+        maxSize: 4 + globalStarSize
+    },
+    // {
+    //     name: "starGlow3.png",
+    //     img: null,
+    //     size: 4 + globalStarSize
+    // }
+];
+
 let roboto; // Font
-let speed = 3;
+const speed = 3;
 let indexPallette = 0; // Index of the shown pallette
 
 let clock;
@@ -15,13 +36,25 @@ let clock;
 let pallettes = []; // Pallettes imported from file
 let jsonTemp; // Temporary variable that charges the JSON file
 let vignette; // The vignette effect image
-let starGlow; // The star glow image effect
+
+let params;
+let showImg;
 
 function preload() {
+    // We first get the colors from the URL
+    params = getURLParams();
+
     jsonTemp = loadJSON("../assets/pallettes.json");
     roboto = loadFont("../assets/Roboto-Black.ttf");
     vignette = loadImage('../assets/vignette.png');
-    starGlow = loadImage('./assets/starGlow.png');
+
+    showImg = params.stars == "true";
+
+    if (showImg) {
+        for (let i = 0; i < starTypes.length; i++) {
+            starTypes[i].img = loadImage('./assets/' + starTypes[i].name);
+        }
+    }
 }
 
 function setup() {
@@ -29,8 +62,6 @@ function setup() {
     // We charge the pallettes
     pallettes = jsonTemp.pallettes;
 
-    // We first get the colors from the URL
-    let params = getURLParams();
 
     if (params.id && !isNaN(params.id)) {
         if (params.id < pallettes.length && params.id >= 0) {
@@ -38,16 +69,23 @@ function setup() {
         }
     }
 
-    let showImg = params.stars == "true";
-
     let smoothing = params.smooth == "true";
 
     createCanvas(windowWidth, windowHeight);
+    imageMode(CENTER, CENTER);
 
     clock = new Clock(smoothing, 0.1);
 
-    for (var i = 0; i < 800; i++) {
-        stars[i] = new Star(showImg);
+    let showImg = params.stars == "true";
+    const amount = showImg ? 400 : 1000;
+
+    for (let i = 0; i < amount; i++) {
+        if (showImg) {
+            const type = random(starTypes);
+            stars[i] = new Star(type);
+        } else {
+            stars[i] = new Star();
+        }
     }
 }
 
@@ -69,7 +107,7 @@ function draw() {
     clock.show();
 
     // Show the vignette image effect
-    image(vignette, -width / 2, -height / 2, width, height);
+    image(vignette, 0, 0, width, height);
 }
 
 function windowResized() {
