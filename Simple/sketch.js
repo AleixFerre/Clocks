@@ -11,9 +11,12 @@ let jsonTemp; // Temporary variable that charges the JSON file
 let vignette; // The vignette effect image
 
 let clock; // The actual clock
+const clockImgs = []; // The clock img
 
 // Function awake
 function preload() {
+    clockImgs[0] = loadImage('../assets/hours-w.png');
+    clockImgs[1] = loadImage('../assets/hours-b.png');
     jsonTemp = loadJSON("../assets/pallettes.json");
     roboto = loadFont('../assets/Roboto-Black.ttf');
     vignette = loadImage('../assets/vignette.png');
@@ -26,7 +29,7 @@ function setup() {
     pallettes = jsonTemp.pallettes;
 
     // We first get the colors from the URL
-    let params = getURLParams();
+    const params = getURLParams();
 
     if (params.id && !isNaN(params.id)) {
         if (params.id < pallettes.length && params.id >= 0) {
@@ -34,11 +37,17 @@ function setup() {
         }
     }
 
-    let smoothing = params.smooth == "true";
-
     createCanvas(windowWidth, windowHeight);
 
-    clock = new Clock(smoothing, 0.1);
+    const smoothing = params.smooth == "true";
+    const showImg = params.image == "true";
+
+    if (showImg) {
+        const clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
+        clock = new Clock(smoothing, 0.1, clockImg);
+    } else {
+        clock = new Clock(smoothing, 0.1);
+    }
 
 }
 

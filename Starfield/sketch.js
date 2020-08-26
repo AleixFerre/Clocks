@@ -39,16 +39,23 @@ let vignette; // The vignette effect image
 
 let params;
 let showImg;
+let clockImgs = [];
+let showClockImg;
 
 function preload() {
     // We first get the colors from the URL
     params = getURLParams();
-
     jsonTemp = loadJSON("../assets/pallettes.json");
     roboto = loadFont("../assets/Roboto-Black.ttf");
     vignette = loadImage('../assets/vignette.png');
 
     showImg = params.stars == "true";
+    showClockImg = params.image == "true";
+
+    if (showClockImg) {
+        clockImgs[0] = loadImage('../assets/hours-w.png');
+        clockImgs[1] = loadImage('../assets/hours-b.png');
+    }
 
     if (showImg) {
         for (let i = 0; i < starTypes.length; i++) {
@@ -62,7 +69,6 @@ function setup() {
     // We charge the pallettes
     pallettes = jsonTemp.pallettes;
 
-
     if (params.id && !isNaN(params.id)) {
         if (params.id < pallettes.length && params.id >= 0) {
             indexPallette = params.id;
@@ -74,9 +80,13 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     imageMode(CENTER, CENTER);
 
-    clock = new Clock(smoothing, 0.1);
+    if (showClockImg) {
+        let clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
+        clock = new Clock(smoothing, 0.1, clockImg);
+    } else {
+        clock = new Clock(smoothing, 0.1);
+    }
 
-    let showImg = params.stars == "true";
     const amount = 1000; // showImg ? 400 : 1000;
 
     for (let i = 0; i < amount; i++) {
@@ -92,6 +102,7 @@ function setup() {
 function draw() {
 
     background(pallettes[indexPallette][0]);
+
     push();
     translate(width / 2, height / 2);
 

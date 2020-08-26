@@ -14,14 +14,17 @@ let vignette; // The vignette effect image
 let clock;
 
 // Snowy things
-let snow = [];
+const snow = [];
 let gravity;
 let zOff = 0;
 let spritesheet;
-let textures = [];
+const textures = [];
+const clockImgs = []; // The clock img
 
 // Function awake
 function preload() {
+    clockImgs[0] = loadImage('../assets/hours-w.png');
+    clockImgs[1] = loadImage('../assets/hours-b.png');
     jsonTemp = loadJSON("../assets/pallettes.json");
     spritesheet = loadImage('assets/flakes32.png');
     roboto = loadFont('../assets/Roboto-Black.ttf');
@@ -43,11 +46,18 @@ function setup() {
         }
     }
 
-    let smoothing = params.smooth == "true";
 
     createCanvas(windowWidth, windowHeight);
 
-    clock = new Clock(smoothing, 0.1);
+    const smoothing = params.smooth == "true";
+    const showImg = params.image == "true";
+
+    if (showImg) {
+        const clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
+        clock = new Clock(smoothing, 0.1, clockImg);
+    } else {
+        clock = new Clock(smoothing, 0.1);
+    }
 
     gravity = createVector(0, 0.3);
     for (let x = 0; x < spritesheet.width; x += 32) {

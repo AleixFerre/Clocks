@@ -4,9 +4,11 @@ let colors = []; // Actual pallette of colors
 let buttons = []; // Clocks' buttons
 let links = []; // Absolute links
 let switchSmooth; // The smoothing switcher
+let switchImg; // The smoothing switcher
 
 let indexPallette = 0; // Index of the shown pallette
 let smooth = false; // Will be the clock smooth?
+let clockImg = false; // Will the clock display an image?
 
 let pallettes = []; // Pallettes imported from file
 let jsonTemp; // Temporary variable that charges the JSON file
@@ -32,6 +34,9 @@ function setup() {
 
     switchSmooth = select("#smooth");
     switchSmooth.changed(changingSmooth);
+
+    switchImg = select("#image");
+    switchImg.changed(changingImage);
 
 
     for (let i = 0; i < pallettes.length; i++) {
@@ -83,6 +88,7 @@ function checkLinks() {
 
     // Smooth
     smooth = switchSmooth.checked();
+    clockImg = switchImg.checked();
 
     updateLinks();
 }
@@ -98,13 +104,18 @@ function changingSmooth() {
     updateLinks();
 }
 
+function changingImage() {
+    clockImg = this.checked();
+    updateLinks();
+}
+
 function updateLinks() {
     for (let i = 0; i < buttons.length; i++) {
         let link = links[i];
         if (link.charAt(link.length - 1) == "/") {
-            buttons[i].elt.href = link + "?id=" + indexPallette + "&smooth=" + smooth;
+            buttons[i].elt.href = link + "?id=" + indexPallette + "&smooth=" + smooth + "&image=" + clockImg;
         } else {
-            buttons[i].elt.href = link + "&id=" + indexPallette + "&smooth=" + smooth;
+            buttons[i].elt.href = link + "&id=" + indexPallette + "&smooth=" + smooth + "&image=" + clockImg;
         }
     }
 }

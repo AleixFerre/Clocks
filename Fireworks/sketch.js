@@ -11,13 +11,16 @@ let jsonTemp; // Temporary variable that charges the JSON file
 let vignette; // The vignette effect image
 
 // Firework things
-let fireworks = [];
+const fireworks = [];
 let gravity;
 let hearts;
 
+const clockImgs = []; // The clock img
 
 // Function awake
 function preload() {
+    clockImgs[0] = loadImage('../assets/hours-w.png');
+    clockImgs[1] = loadImage('../assets/hours-b.png');
     jsonTemp = loadJSON("../assets/pallettes.json");
     roboto = loadFont('../assets/Roboto-Black.ttf');
     vignette = loadImage('../assets/vignette-25.png');
@@ -40,13 +43,20 @@ function setup() {
         }
     }
 
-    let smoothing = params.smooth == "true";
+    createCanvas(windowWidth, windowHeight);
 
     hearts = params.heart == "true";
 
-    createCanvas(windowWidth, windowHeight);
+    const smoothing = params.smooth == "true";
+    const showImg = params.image == "true";
 
-    clock = new Clock(smoothing, 0.1);
+    if (showImg) {
+        const clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
+        clock = new Clock(smoothing, 0.1, clockImg);
+    } else {
+        clock = new Clock(smoothing, 0.1);
+    }
+
 }
 
 // Function update
