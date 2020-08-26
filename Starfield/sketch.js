@@ -77,7 +77,7 @@ function setup() {
     clock = new Clock(smoothing, 0.1);
 
     let showImg = params.stars == "true";
-    const amount = showImg ? 400 : 1000;
+    const amount = 1000; // showImg ? 400 : 1000;
 
     for (let i = 0; i < amount; i++) {
         if (showImg) {
