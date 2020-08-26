@@ -9,9 +9,7 @@ class Star {
         this.y = random(-height, height);
         this.z = random(width);
         this.pz = this.z;
-
-        //? See function showStar(...) to see because this is commented
-        //  this.rotation = random(0, 360);
+        this.rotation = random(0, 360);
 
         if (type) {
             this.size = random(type.minSize, type.maxSize);;
@@ -55,21 +53,20 @@ class Star {
     }
 
     showStar(sx, sy, r) {
-        // This comented code is to enable rotation
-        // This is not implemented because of the translate/rotate stack inefficiency
-        // with such amount of stars.
-        //
-        // push();
-        // translate(sx, sy);
-        // rotate(this.rotation);
-        // this.rotation += 0.5;
-        //
-        // if (this.rotation > 360) {
-        //     this.rotation = 0;
-        // }
-        //
-        image(this.img, sx, sy, r, r);
-        //
-        // pop();
+        // This rotates the star image by it's center
+        push();
+
+        translate(sx, sy);
+        rotate(this.rotation);
+
+        this.rotation += 0.5;
+
+        if (this.rotation > 360) {
+            this.rotation = 0;
+        }
+
+        image(this.img, 0, 0, r, r);
+
+        pop();
     }
 }

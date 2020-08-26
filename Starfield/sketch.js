@@ -78,7 +78,6 @@ function setup() {
     let smoothing = params.smooth == "true";
 
     createCanvas(windowWidth, windowHeight);
-    imageMode(CENTER, CENTER);
 
     if (showClockImg) {
         let clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
@@ -87,7 +86,7 @@ function setup() {
         clock = new Clock(smoothing, 0.1);
     }
 
-    const amount = 1000; // showImg ? 400 : 1000;
+    const amount = showImg ? 600 : 1000;
 
     for (let i = 0; i < amount; i++) {
         if (showImg) {
@@ -107,6 +106,7 @@ function draw() {
     translate(width / 2, height / 2);
 
     // Update and show all the particles
+    imageMode(CENTER, CENTER);
     for (var i = 0; i < stars.length; i++) {
         stars[i].update();
         stars[i].show();
@@ -114,11 +114,12 @@ function draw() {
 
     pop();
 
+    imageMode(CORNER);
     clock.update();
     clock.show();
 
     // Show the vignette image effect
-    image(vignette, 0, 0, width, height);
+    image(vignette, -width / 2, -height / 2, width, height);
 }
 
 function windowResized() {
