@@ -39,6 +39,7 @@ let vignette; // The vignette effect image
 
 let params;
 let showImg;
+let isAmPm;
 let clockImgs = [];
 let showClockImg;
 
@@ -51,6 +52,7 @@ function preload() {
 
     showImg = params.stars == "true";
     showClockImg = params.image == "true";
+    isAmPm = params.ampm == "true";
 
     if (showClockImg) {
         clockImgs[0] = loadImage('../assets/hours-w.png');
@@ -81,9 +83,9 @@ function setup() {
 
     if (showClockImg) {
         let clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
-        clock = new Clock(smoothing, 0.1, clockImg);
+        clock = new Clock(smoothing, 0.1, clockImg, isAmPm);
     } else {
-        clock = new Clock(smoothing, 0.1);
+        clock = new Clock(smoothing, 0.1, null, isAmPm);
     }
 
     const amount = showImg ? 600 : 1000;

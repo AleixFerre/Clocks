@@ -9,7 +9,7 @@ const alpha = 255; // Alpha 0-255
 
 class Clock {
 
-    constructor(smooth, smoothVel, img) {
+    constructor(smooth, smoothVel, img, ampm) {
         this.h = hour();
         this.m = minute();
         this.s = second();
@@ -18,6 +18,7 @@ class Clock {
         this.smoothedAngles = [];
         this.smoothVel = smoothVel || 0.1;
         this.img = img;
+        this.ampm = ampm;
         this.setupClock();
     }
 
@@ -113,7 +114,12 @@ class Clock {
         fill(color4);
         noStroke();
         textAlign(CENTER);
-        text(pad(this.h, 2) + ':' + pad(this.m, 2) + ':' + pad(this.s, 2), 10, 300);
+        textSize(100);
+        text(pad(this.ampm ? this.h % 12 : this.h, 2) + ':' + pad(this.m, 2) + ':' + pad(this.s, 2), 10, 300);
+        if (this.ampm) {
+            textSize(30);
+            text(this.h < 12 ? "AM" : "PM", 240, 300);
+        }
     }
 
     updateAngles() {

@@ -41,12 +41,13 @@ function setup() {
 
     const smoothing = params.smooth == "true";
     const showImg = params.image == "true";
+    const isAmPm = params.ampm == "true";
 
     if (showImg) {
         const clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
-        clock = new Clock(smoothing, 0.1, clockImg);
+        clock = new Clock(smoothing, 0.1, clockImg, isAmPm);
     } else {
-        clock = new Clock(smoothing, 0.1);
+        clock = new Clock(smoothing, 0.1, null, isAmPm);
     }
 
 }
