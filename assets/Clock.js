@@ -114,12 +114,21 @@ class Clock {
         fill(color4);
         noStroke();
         textAlign(CENTER);
-        textSize(100);
-        text(pad(this.ampm ? this.h % 12 : this.h, 2) + ':' + pad(this.m, 2) + ':' + pad(this.s, 2), 10, 300);
+       
+        let hora = this.h;
         if (this.ampm) {
+            let isAM = this.h < 12;
+            if (this.h === 12) {
+                hora = 12;
+                isAM = true;
+            } else {
+                hora = this.h % 12;
+            }
             textSize(30);
-            text(this.h < 12 ? "AM" : "PM", 240, 300);
+            text(isAM ? "AM" : "PM", 240, 300);
         }
+        textSize(100);
+        text(pad(hora, 2) + ':' + pad(this.m, 2) + ':' + pad(this.s, 2), 10, 300);
     }
 
     updateAngles() {
