@@ -8,7 +8,7 @@ class Firework {
         this.firework = new Particle(random(width), height, true, false);
         this.exploded = false;
         this.particles = [];
-        this.nParticles = 100;
+        this.nParticles = 70;
     }
 
     done() {

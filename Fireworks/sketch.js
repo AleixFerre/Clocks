@@ -71,7 +71,7 @@ function draw() {
 
     // Show the fireworks
     colorMode(HSB);
-    if (random() < 0.03) { // 3% chance every frame to spawn
+    if (random() < 0.02) { // 2% chance every frame to spawn
         fireworks.push(new Firework());
     }
 
