@@ -19,6 +19,7 @@ class Clock {
         this.smoothVel = smoothVel || 0.1;
         this.img = img;
         this.ampm = ampm;
+        this.isAM = false;
         this.setupClock();
     }
 
@@ -40,9 +41,22 @@ class Clock {
     }
 
     update() {
-        this.h = hour();
         this.m = minute();
         this.s = second();
+        this.h = hour();
+
+        if (this.ampm) {
+            if (this.h === 12) {
+                this.h = 12;
+                this.isAM = true;
+            } else if (this.h === 0) {
+                this.h = 12;
+                this.isAM = false;
+            } else {
+                this.isAM = this.h < 12;
+                this.h = this.h % 12;
+            }
+        }
     }
 
     show() {
@@ -114,21 +128,14 @@ class Clock {
         fill(color4);
         noStroke();
         textAlign(CENTER);
-       
-        let hora = this.h;
-        if (this.ampm) {
-            let isAM = this.h < 12;
-            if (this.h === 12) {
-                hora = 12;
-                isAM = true;
-            } else {
-                hora = this.h % 12;
-            }
-            textSize(30);
-            text(isAM ? "AM" : "PM", 240, 300);
-        }
+
         textSize(100);
-        text(pad(hora, 2) + ':' + pad(this.m, 2) + ':' + pad(this.s, 2), 10, 300);
+        text(pad(this.h, 2) + ':' + pad(this.m, 2) + ':' + pad(this.s, 2), 10, 300);
+        
+        if (this.ampm) {
+            textSize(30);
+            text(this.isAM ? "AM" : "PM", 240, 300);
+        }
     }
 
     updateAngles() {
