@@ -3,14 +3,17 @@ let div; // The div that all is in
 let colors = []; // Actual pallette of colors
 let buttons = []; // Clocks' buttons
 let links = []; // Absolute links
+
 let switchSmooth; // The smoothing switcher
-let switchampm; // The ampm switcher
+let switchAmpm; // The ampm switcher
 let switchImg; // The image switcher
+let switchDate; // The date switcher
 
 let indexPallette = 0; // Index of the shown pallette
 let smooth = false; // Will be the clock smooth?
 let ampm = false; // Will be the clock 12h mode?
 let clockImg = false; // Will the clock display an image?
+let showDate = false; // Will the clock display the date?
 
 let pallettes = []; // Pallettes imported from file
 let jsonTemp; // Temporary variable that charges the JSON file
@@ -37,12 +40,14 @@ function setup() {
     switchSmooth = select("#smooth");
     switchSmooth.changed(changingSmooth);
 
-    ampmSmooth = select("#ampm");
-    ampmSmooth.changed(changingAmpm);
+    switchAmpm = select("#ampm");
+    switchAmpm.changed(changingAmpm);
 
     switchImg = select("#image");
     switchImg.changed(changingImage);
 
+    switchDate = select("#date");
+    switchDate.changed(changingDate);
 
     for (let i = 0; i < pallettes.length; i++) {
         selectPallette.option("Pallette" + (i + 1));
@@ -94,6 +99,8 @@ function checkLinks() {
     // Smooth
     smooth = switchSmooth.checked();
     clockImg = switchImg.checked();
+    ampm = switchAmpm.checked();
+    showDate = switchDate.checked();
 
     updateLinks();
 }
@@ -119,13 +126,18 @@ function changingImage() {
     updateLinks();
 }
 
+function changingDate() {
+    showDate = this.checked();
+    updateLinks();
+}
+
 function updateLinks() {
     for (let i = 0; i < buttons.length; i++) {
         let link = links[i];
         if (link.charAt(link.length - 1) == "/") {
-            buttons[i].elt.href = link + "?id=" + indexPallette + "&smooth=" + smooth + "&image=" + clockImg + "&ampm=" + ampm;
+            buttons[i].elt.href = link + "?id=" + indexPallette + "&smooth=" + smooth + "&image=" + clockImg + "&ampm=" + ampm + "&date=" + showDate;
         } else {
-            buttons[i].elt.href = link + "&id=" + indexPallette + "&smooth=" + smooth + "&image=" + clockImg + "&ampm=" + ampm;
+            buttons[i].elt.href = link + "&id=" + indexPallette + "&smooth=" + smooth + "&image=" + clockImg + "&ampm=" + ampm + "&date=" + showDate;
         }
     }
 }

@@ -46,18 +46,18 @@ function setup() {
         }
     }
 
-
     createCanvas(windowWidth, windowHeight);
 
     const smoothing = params.smooth == "true";
     const showImg = params.image == "true";
     const isAmPm = params.ampm == "true";
+    const showDate = params.date == "true";
 
     if (showImg) {
         const clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
-        clock = new Clock(smoothing, 0.1, clockImg, isAmPm);
+        clock = new Clock(smoothing, 0.1, clockImg, isAmPm, showDate);
     } else {
-        clock = new Clock(smoothing, 0.1, null, isAmPm);
+        clock = new Clock(smoothing, 0.1, null, isAmPm, showDate);
     }
 
     gravity = createVector(0, 0.3);
@@ -68,7 +68,6 @@ function setup() {
             textures.push(img);
         }
     }
-
 
     for (let i = 0; i < 400; i++) {
         let x = random(width);

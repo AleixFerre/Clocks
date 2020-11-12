@@ -9,7 +9,7 @@ const alpha = 255; // Alpha 0-255
 
 class Clock {
 
-    constructor(smooth, smoothVel, img, ampm) {
+    constructor(smooth, smoothVel, img, ampm, showDate) {
         this.h = hour();
         this.m = minute();
         this.s = second();
@@ -20,6 +20,7 @@ class Clock {
         this.img = img;
         this.ampm = ampm;
         this.isAM = false;
+        this.showDate = showDate;
         this.setupClock();
     }
 
@@ -135,6 +136,11 @@ class Clock {
         if (this.ampm) {
             textSize(30);
             text(this.isAM ? "AM" : "PM", 240, 300);
+        }
+
+        if (this.showDate) {
+            textSize(30);
+            text(pad(day(), 2) + '/' + pad(month(), 2) + '/' + pad(year(), 2), 0, 340);
         }
     }
 

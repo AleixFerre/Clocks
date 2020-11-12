@@ -77,15 +77,16 @@ function setup() {
         }
     }
 
-    let smoothing = params.smooth == "true";
+    const smoothing = params.smooth == "true";
+    const showDate = params.date == "true";
 
     createCanvas(windowWidth, windowHeight);
 
     if (showClockImg) {
         let clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
-        clock = new Clock(smoothing, 0.1, clockImg, isAmPm);
+        clock = new Clock(smoothing, 0.1, clockImg, isAmPm, showDate);
     } else {
-        clock = new Clock(smoothing, 0.1, null, isAmPm);
+        clock = new Clock(smoothing, 0.1, null, isAmPm, showDate);
     }
 
     const amount = showImg ? 600 : 1000;
