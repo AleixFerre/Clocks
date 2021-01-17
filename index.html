@@ -10,51 +10,63 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
-    <script src="sketch.js"></script>
+<body class="unselectable">
+    <div class="content">
+        <h1>Change the clock properties!</h1>
+        <div class="grid">
+            <div>
+                <label class="switch">
+                    <input type="checkbox" id="smooth">
+                    <span class="slider round"></span>
+                    <p class="unselectable"><b> Smooth Clock </b></p>
+                </label>
+            </div>
+            <div>
+                <label class="switch">
+                    <input type="checkbox" id="ampm">
+                    <span class="slider round"></span>
+                    <p class="unselectable"><b> 12h Clock </b></p>
+                </label>
+            </div>
+            <div>
+                <label class="switch">
+                    <input type="checkbox" id="image">
+                    <span class="slider round"></span>
+                    <p class="unselectable"><b> Image Clock </b></p>
+                </label>
+            </div>
+            <div>
+                <label class="switch">
+                    <input type="checkbox" id="date">
+                    <span class="slider round"></span>
+                    <p class="unselectable"><b> Show date </b></p>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="content" id="pallette">
+        <h1>Choose your clock pallette!</h1>
+    </div>   
+    
     <div class="content">
         <h1>Choose your clock style!</h1>
         <div class="vertical-menu">
             <a href="./Simple/" class="clockBtn">Simple Clock</a>
-            <div class="horizontal-menu">
+            <div class="grid2">
                 <a href="./Starfield/?stars=false" class="clockBtn">Starfield Clock</a>
                 <a href="./Starfield/?stars=true" class="clockBtn">Starfield Glow Clock</a>
             </div>
             <a href="./Snow/" class="clockBtn">Snow Clock</a>
-            <div class="horizontal-menu">
+            <div class="grid2">
                 <a href="./Fireworks/?heart=false" class="clockBtn">Fireworks Clock</a>
                 <a href="./Fireworks/?heart=true" class="clockBtn">Heart Fireworks Clock</a>
             </div>
-            <a href="./404" class="error">404 page</a>
         </div>
-    </div>
-
-    <div class="content">
-        <h1>Change the clock properties!</h1>
-        <p><b> Smooth Clock </b></p>
-        <label class="switch">
-            <input type="checkbox" id="smooth">
-            <span class="slider round"></span>
-        </label>
-        <p><b> 12h Clock </b></p>
-        <label class="switch">
-            <input type="checkbox" id="ampm">
-            <span class="slider round"></span>
-        </label>
-        <p><b> Image Clock </b></p>
-        <label class="switch">
-            <input type="checkbox" id="image">
-            <span class="slider round"></span>
-        </label>
-        <p><b> Show date </b></p>
-        <label class="switch">
-            <input type="checkbox" id="date">
-            <span class="slider round"></span>
-        </label>
-    </div>
-    <div class="content" id="pallette">
-        <h1>Choose your clock pallette!</h1>
-    </div>
+    </div>  
+    
+    <script src="sketch.js"></script>
+    
 </body>
 
 </html>

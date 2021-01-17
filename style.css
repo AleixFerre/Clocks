@@ -3,7 +3,7 @@ body {
     margin: 0px;
     background-color: #264653;
     color: #FFECD1;
-    font-family: "Roboto";
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 canvas {
@@ -11,21 +11,40 @@ canvas {
 }
 
 select {
-    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
     text-align-last: center;
     -moz-text-align-last: center;
-    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+}
+
+.grid>div {
+    text-align: center;
+    margin: auto;
+}
+
+.grid2 {
+    display: grid;
+    margin-left: auto;
+    margin-bottom: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
 }
 
 .content {
-    max-width: 500px;
+    min-width: fit-content;
+    width: 50%;
     margin: auto;
+    display: grid;
     padding: 10px;
 }
 
 .vertical-menu {
-    width: 100%;
-    max-width: 500px;
+    width: auto;
     margin: 10px;
 }
 
@@ -42,26 +61,14 @@ select {
 }
 
 .vertical-menu a:hover {
+    transition: 0.2s;
+    transition-timing-function: ease-in-out;
     background-color: #f68c36;
-}
-
-.vertical-menu a.error {
-    background-color: red;
-    color: white;
-}
-
-.vertical-menu a.error:hover {
-    background-color: rgb(214, 0, 0)
 }
 
 .horizontal-menu {
     position: relative;
-    display: inline-flex;
-}
-
-.horizontal-menu a {
-    width: 218px;
-    margin-right: 4px;
+    display: auto;
 }
 
 h1 {
@@ -98,8 +105,8 @@ h1 {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: .2s;
+    transition: .2s;
 }
 
 .slider:before {
@@ -110,8 +117,17 @@ h1 {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 input:checked+.slider {
@@ -138,3 +154,4 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+

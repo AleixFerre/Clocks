@@ -1,6 +1,7 @@
 let selectPallette; // Dropdown of the different pallettes
 let div; // The div that all is in
 let colors = []; // Actual pallette of colors
+let desiredColors = []; // Actual pallette of colors desired for the effect
 let buttons = []; // Clocks' buttons
 let links = []; // Absolute links
 
@@ -37,6 +38,13 @@ function setup() {
     selectPallette.parent(div);
     selectPallette.changed(palletteChanged);
 
+    for (let i = 0; i < pallettes.length; i++) {
+        selectPallette.option("Pallette " + (i + 1));
+    }
+
+    colors = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
+    desiredColors = colors;
+
     switchSmooth = select("#smooth");
     switchSmooth.changed(changingSmooth);
 
@@ -49,36 +57,35 @@ function setup() {
     switchDate = select("#date");
     switchDate.changed(changingDate);
 
-    for (let i = 0; i < pallettes.length; i++) {
-        selectPallette.option("Pallette" + (i + 1));
-    }
-
     // We first get the colors from the URL
     let params = getURLParams();
 
     if (params.id && !isNaN(params.id)) {
         if (params.id < pallettes.length && params.id >= 0) {
             indexPallette = params.id;
-            selectPallette.selected('Pallette' + Number(Number(indexPallette) + 1));
+            selectPallette.selected('Pallette ' + Number(Number(indexPallette) + 1));
         }
     }
 
-    createCanvas(windowWidth, 200);
+    let canvas = createCanvas(windowWidth-30, 200);
+    canvas.parent('pallette');
     checkLinks();
-
+    noStroke();
 }
 
 function draw() {
-    colors = pallettes[indexPallette];
+    
+    desiredColors = pallettes[indexPallette];
+    
+    for(let i = 0; i < desiredColors.length; i++) {
+        colors[i] = lerpColor(color(colors[i]), color(desiredColors[i]), 0.1);
+    }
+
     let size = floor(width / colors.length);
 
-    background(0);
-    noStroke();
-
     for (let i = 0; i < colors.length; i++) {
-        let posX = i * size;
         fill(colors[i]);
-        rect(posX, 0, size, height);
+        rect(i * size, 0, size, height);
     }
 
     stroke(255, 255, 255, 100);
