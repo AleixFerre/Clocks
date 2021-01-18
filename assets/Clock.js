@@ -61,7 +61,6 @@ class Clock {
     }
 
     show() {
-
         angleMode(DEGREES);
         const pallette = pallettes[indexPallette];
 
@@ -129,7 +128,9 @@ class Clock {
         fill(color4);
         noStroke();
         textAlign(CENTER);
-
+        
+        stroke(0);
+        strokeWeight(2);
         textSize(100);
         text(pad(this.h, 2) + ':' + pad(this.m, 2) + ':' + pad(this.s, 2), 10, 300);
         
@@ -142,6 +143,7 @@ class Clock {
             textSize(30);
             text(pad(day(), 2) + '/' + pad(month(), 2) + '/' + pad(year(), 2), 0, 340);
         }
+        noStroke();
     }
 
     updateAngles() {

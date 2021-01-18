@@ -13,6 +13,12 @@ let vignette; // The vignette effect image
 
 let clock;
 
+let haveImage = false; // If we have a image link in the params
+let isLoaded = false; // Check if image is loaded or not yet
+let backgroundImage = null; // The background image if we set a link
+let imgError = false; // Do we have troubles loading the image?
+
+
 // Snowy things
 const snow = [];
 let gravity;
@@ -29,6 +35,22 @@ function preload() {
     spritesheet = loadImage('assets/flakes32.png');
     roboto = loadFont('../assets/Roboto-Black.ttf');
     vignette = loadImage('../assets/vignette.png');
+
+    if (getURLParams()["imgLink"]) {
+        haveImage = true;
+        imgLink = window.location.href.substring(window.location.href.indexOf("imgLink=") + 8);
+    }
+}
+
+function loaded(i) {
+    backgroundImage = i;
+    isLoaded = true;
+}
+
+function loadError(e) {
+    console.log(e);
+    console.log("Error al carregar la imatge del background!");
+    imgError = true;
 }
 
 // Function start
@@ -47,6 +69,11 @@ function setup() {
     }
 
     createCanvas(windowWidth, windowHeight);
+
+    if (haveImage) {
+        isLoaded = false;
+        backgroundImage = loadImage(imgLink, loaded, loadError);
+    }
 
     const smoothing = params.smooth == "true";
     const showImg = params.image == "true";
@@ -83,6 +110,10 @@ function draw() {
 
     background(pallettes[indexPallette][0]);
 
+    if (backgroundImage && isLoaded) {
+        image(backgroundImage, 0, 0, width, height);
+    }
+
     zOff += 0.01;
 
     for (let flake of snow) {
@@ -102,6 +133,19 @@ function draw() {
     clock.show();
 
     image(vignette, -width / 2, -height / 2, width, height);
+
+
+    if (imgError) {
+        translate(-width / 2, -height / 2);
+        textAlign(CENTER);
+        textSize(40);
+        fill("red");
+        stroke("white");
+        strokeWeight(2);
+        text("ERROR: CANNOT LOAD THE BACKGROUND IMAGE!", width / 2, height / 2);
+        text("Try with other link, we are sorry...", width / 2, 50 + height / 2);
+        noLoop();
+    }
 }
 
 function windowResized() {

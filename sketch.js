@@ -1,9 +1,12 @@
 let selectPallette; // Dropdown of the different pallettes
 let div; // The div that all is in
+let careta; // emoji link
 let colors = []; // Actual pallette of colors
 let desiredColors = []; // Actual pallette of colors desired for the effect
 let buttons = []; // Clocks' buttons
 let links = []; // Absolute links
+
+let extensions = [".png", ".jpg"];
 
 let switchSmooth; // The smoothing switcher
 let switchAmpm; // The ampm switcher
@@ -15,6 +18,7 @@ let smooth = false; // Will be the clock smooth?
 let ampm = false; // Will be the clock 12h mode?
 let clockImg = false; // Will the clock display an image?
 let showDate = false; // Will the clock display the date?
+let imgLink = ""; // Backgroung image from the internet
 
 let pallettes = []; // Pallettes imported from file
 let jsonTemp; // Temporary variable that charges the JSON file
@@ -42,6 +46,8 @@ function setup() {
         selectPallette.option("Pallette " + (i + 1));
     }
 
+    careta = document.getElementById("carita");
+
     colors = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
     desiredColors = colors;
 
@@ -57,6 +63,10 @@ function setup() {
     switchDate = select("#date");
     switchDate.changed(changingDate);
 
+    linkText = select("#link");
+    linkText.input(changingLink);
+    careta.innerHTML = "&#xf11a;";
+
     // We first get the colors from the URL
     let params = getURLParams();
 
@@ -67,17 +77,17 @@ function setup() {
         }
     }
 
-    let canvas = createCanvas(windowWidth-30, 200);
+    let canvas = createCanvas(windowWidth - 40, 200);
     canvas.parent('pallette');
     checkLinks();
     noStroke();
 }
 
 function draw() {
-    
+
     desiredColors = pallettes[indexPallette];
-    
-    for(let i = 0; i < desiredColors.length; i++) {
+
+    for (let i = 0; i < desiredColors.length; i++) {
         colors[i] = lerpColor(color(colors[i]), color(desiredColors[i]), 0.1);
     }
 
@@ -138,6 +148,71 @@ function changingDate() {
     updateLinks();
 }
 
+function testImage(url, callback, timeout) {
+    timeout = timeout || 5000;
+    var timedOut = false, timer;
+    var img = new Image();
+    img.onerror = img.onabort = function() {
+        if (!timedOut) {
+            clearTimeout(timer);
+            callback(url, "error");
+        }
+    };
+    img.onload = function() {
+        if (!timedOut) {
+            clearTimeout(timer);
+            callback(url, "success");
+        }
+    };
+    img.src = url;
+    timer = setTimeout(function() {
+        timedOut = true;
+        callback(url, "timeout");
+    }, timeout); 
+}
+
+function record(url, result) {
+    if (result === "success") {        
+        careta.innerHTML = "&#xf118;";
+        document.getElementById("caritaTxt").innerHTML = "You are good to go!";
+        careta.style.color = "green";
+    } else {
+        careta.innerHTML = "&#xf119;";
+        document.getElementById("caritaTxt").innerHTML = "Image not found in that link. Try another one";
+        careta.style.color = "#ff5145";
+        imgLink = "";
+    }
+    updateLinks();
+}   
+
+function changingLink() {
+    console.log("loading...");
+    careta.innerHTML = "&#xf110;";
+    careta.style.color = "white";
+
+    imgLink = trim(this.elt.value);
+    if (imgLink === "") {
+        console.log("String buit");
+        careta.innerHTML = "&#xf11a;";
+        document.getElementById("caritaTxt").innerHTML = "Empty link not allowed!";
+        careta.style.color = "white";
+        updateLinks();
+    } else if (checkURL(imgLink)) {
+        testImage(imgLink, record);
+    } else {
+        console.log("Extensió no valida");
+        careta.innerHTML = "&#xf119;";
+        document.getElementById("caritaTxt").innerHTML = "Link extension not allowed!";
+        careta.style.color = "#ff5145";
+        imgLink = "";
+        updateLinks();
+    }
+}
+
+function checkURL(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
+
 function updateLinks() {
     for (let i = 0; i < buttons.length; i++) {
         let link = links[i];
@@ -145,6 +220,10 @@ function updateLinks() {
             buttons[i].elt.href = link + "?id=" + indexPallette + "&smooth=" + smooth + "&image=" + clockImg + "&ampm=" + ampm + "&date=" + showDate;
         } else {
             buttons[i].elt.href = link + "&id=" + indexPallette + "&smooth=" + smooth + "&image=" + clockImg + "&ampm=" + ampm + "&date=" + showDate;
+        }
+
+        if (imgLink !== "") {
+            buttons[i].elt.href += "&imgLink=" + imgLink
         }
     }
 }
