@@ -9,7 +9,7 @@ class Particle {
         this.lifespan = random(50, 255);
         this.hu = random(71, 255);
         this.acc = createVector(0, 0);
-        this.prevPos = createVector(x, y);
+        this.history = [];
 
         if (this.firework) {
             this.vel = createVector(random(-2, 2), (height * random(-7, -4)) / 500);
@@ -28,7 +28,9 @@ class Particle {
     }
 
     update() {
-        this.prevPos = p5.Vector.sub(this.pos, this.vel);
+        if (this.history.length > 3) {
+            this.history.splice(0, 1);
+        }
 
         if (!this.firework) {
             this.vel.mult(random(0.95, 1));
@@ -37,6 +39,9 @@ class Particle {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
         this.acc.mult(0);
+
+        let v = createVector(this.pos.x, this.pos.y);
+        this.history.push(v);
     }
 
     done() {
@@ -57,8 +62,10 @@ class Particle {
 
         if (!this.firework) {
             colorMode(RGB, 255);
-            stroke(255, 255, 255, this.lifespan);
-            point(this.prevPos.x, this.prevPos.y);
+            stroke(255, 255, 255, this.lifespan/2);
+            for (let i = 0; i < this.history.length; i++) {
+                point(this.history[i].x, this.history[i].y);
+            }
         }
     }
 }

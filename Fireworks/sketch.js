@@ -28,7 +28,7 @@ function preload() {
     clockImgs[1] = loadImage('../assets/hours-b.png');
     jsonTemp = loadJSON("../assets/pallettes.json");
     roboto = loadFont('../assets/Roboto-Black.ttf');
-    vignette = loadImage('../assets/vignette-25.png');
+    vignette = loadImage('../assets/vignette.png');
 
     if (getURLParams()["imgLink"]) {
         haveImage = true;
@@ -78,6 +78,8 @@ function setup() {
     const isAmPm = params.ampm == "true";
     const showDate = params.date == "true";
 
+    colorMode(HSB);
+
     if (showImg) {
         const clockImg = pallettes[indexPallette][4] === "#FFFFFF" ? clockImgs[0] : clockImgs[1];
         clock = new Clock(smoothing, 0.1, clockImg, isAmPm, showDate);
@@ -90,17 +92,13 @@ function setup() {
 // Function update
 function draw() {
     const pallette = pallettes[indexPallette];
-    colorMode(RGB);
-    const col = color(pallette[0]);
-    col.setAlpha(95);
-    background(col);
+    background(pallette[0]);
 
     if (backgroundImage && isLoaded) {
         image(backgroundImage, 0, 0, width, height);
     }
 
     // Show the fireworks
-    colorMode(HSB);
     if (random() < 0.02) { // 2% chance every frame to spawn
         fireworks.push(new Firework());
     }
